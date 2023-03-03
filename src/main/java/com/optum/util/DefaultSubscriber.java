@@ -5,7 +5,7 @@ import org.reactivestreams.Subscription;
 
 public class DefaultSubscriber implements Subscriber<Object> {
 
-	private String name;
+	private String name = "";
 
 	public DefaultSubscriber() {
 		super();
@@ -34,7 +34,7 @@ public class DefaultSubscriber implements Subscriber<Object> {
 
 	@Override
 	public void onComplete() {
-		System.out.println(name + " onComplete");
+		System.out.println(name + " onComplete()");
 	}
 
 }
