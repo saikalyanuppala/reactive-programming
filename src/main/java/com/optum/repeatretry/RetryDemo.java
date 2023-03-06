@@ -1,13 +1,21 @@
 package com.optum.repeatretry;
 
+import java.time.Duration;
+
 import com.optum.util.Util;
 
 import reactor.core.publisher.Flux;
+import reactor.util.retry.Retry;
 
-public class Retry {
+public class RetryDemo {
 
 	public static void main(String[] args) {
 		getNumbers().retry(2).subscribe(Util.subscriber());
+
+		System.out.println("--- retry with fixed delay ----");
+		getNumbers().retryWhen(Retry.fixedDelay(2, Duration.ofSeconds(3))).subscribe(Util.subscriber());
+
+		Util.sleepSeconds(30);
 	}
 
 	private static Flux<Integer> getNumbers() {
