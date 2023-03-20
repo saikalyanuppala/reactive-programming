@@ -13,7 +13,8 @@ public class RetryDemo {
 		getNumbers().retry(2).subscribe(Util.subscriber());
 
 		System.out.println("--- retry with fixed delay ----");
-		getNumbers().retryWhen(Retry.fixedDelay(2, Duration.ofSeconds(3))).subscribe(Util.subscriber());
+		getNumbers().retryWhen(Retry.fixedDelay(2, Duration.ofSeconds(3)))
+		.subscribe(Util.subscriber());
 
 		Util.sleepSeconds(30);
 	}

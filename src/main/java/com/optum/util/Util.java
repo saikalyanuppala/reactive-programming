@@ -15,7 +15,7 @@ public class Util {
 	}
 
 	public static Consumer<Object> onNext() {
-		return o -> System.out.println("onNext -> " + o);
+		return o -> System.out.println(threadName() + "onNext -> " + o);
 	}
 
 	public static Consumer<Throwable> onError() {
@@ -23,7 +23,7 @@ public class Util {
 	}
 
 	public static Runnable onComplete() {
-		return () -> System.out.println("onComplete() completed");
+		return () -> System.out.println(threadName() + "onComplete() completed");
 	}
 
 	public static void sleepSeconds(int seconds) {
@@ -46,4 +46,7 @@ public class Util {
 		return new DefaultSubscriber(name);
 	}
 
+	public static String threadName() {
+		return Thread.currentThread().getName() + " ";
+	}
 }
