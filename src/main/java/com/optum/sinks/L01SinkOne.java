@@ -12,8 +12,9 @@ public class L01SinkOne {
 		One<Object> oneSink = Sinks.one();
 		
 		Mono<Object> asMono = oneSink.asMono();
-		asMono.subscribe(Util.subscriber("sai"));
-		
-		oneSink.tryEmitValue("Hello sinks");
+		asMono.subscribe(Util.subscriber("sai subscriber"));
+		asMono.subscribe(Util.subscriber("kalyan subscriber"));
+
+		oneSink.tryEmitValue("Hello sinks.one");
 	}
 }
